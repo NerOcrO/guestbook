@@ -1,0 +1,29 @@
+{
+  "name": "guestbook",
+  "version": "1.0.0",
+  "description": "A simple guestbook with many BDD",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "DEBUG=gb nodemon src/index.js --exec babel-node",
+    "start": "node -r babel-register src/index.js"
+  },
+  "keywords": [],
+  "author": "NerOcrO",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "debug": "^3.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "moment": "^2.22.1",
+    "mysql": "^2.15.0",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.17.5"
+  }
+}

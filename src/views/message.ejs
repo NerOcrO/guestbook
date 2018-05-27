@@ -1,0 +1,7 @@
+<div>
+  <a href="/message/<%= message.mid %>">Message <%= message.mid %> - <%= message.created.format('MMMM Do YYYY, h:mm:ss a') %> - <%= message.created.fromNow() %></a>
+  <br>
+  <p><%= message.content %></p>
+  <a href="/message/<%= message.mid %>/update" class="btn btn-success">Update</a>
+  <a href="/message/<%= message.mid %>/delete" class="btn btn-danger">Delete</a>
+</div>

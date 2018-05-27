@@ -1,0 +1,7 @@
+<%- include('form') %>
+<section>
+  <% for (const message of locals.messages) { %>
+    <hr>
+    <%- include('message', {message}) %>
+  <% } %>
+</section>
