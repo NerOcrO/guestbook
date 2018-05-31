@@ -18,7 +18,11 @@ router.get('/', (request, response) => {
 router.get('/message/:mid(\\d+)', (request, response) => {
   Message.load(request.params.mid, (message) => {
     if (message.length === 0) {
-      response.status(404).send('This message does not exist.')
+      response.status(404).render('layout', {
+        view: 'error',
+        title: 'Error 404',
+        error: 'This message does not exist.',
+      })
     }
     else {
       response.locals.message = message
@@ -37,7 +41,11 @@ router.get('/message/:mid(\\d+)/delete', (request, response) => {
       response.redirect('/')
     }
     else {
-      response.status(404).send('This message does not exist.')
+      response.status(404).render('layout', {
+        view: 'error',
+        title: 'Error 404',
+        error: 'This message does not exist.',
+      })
     }
   })
 })
@@ -45,7 +53,11 @@ router.get('/message/:mid(\\d+)/delete', (request, response) => {
 router.get('/message/:mid(\\d+)/update', (request, response) => {
   Message.load(request.params.mid, (message) => {
     if (message.length === 0) {
-      response.status(404).send('This message does not exist.')
+      response.status(404).render('layout', {
+        view: 'error',
+        title: 'Error 404',
+        error: 'This message does not exist.',
+      })
     }
     else {
       response.locals.message = message
