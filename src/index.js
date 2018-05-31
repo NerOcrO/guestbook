@@ -1,6 +1,8 @@
 'use strict'
 
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+import csurf from 'csurf'
 import express from 'express'
 import session from 'express-session'
 import helmet from 'helmet'
@@ -25,6 +27,8 @@ app.set('views', join(__dirname, '/views'))
 app.use(helmet())
 // Public directory.
 app.use(express.static('public'))
+// CSRF
+app.use(cookieParser())
 // Body parser (POST).
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -45,7 +49,7 @@ app.use(session(sess))
 // Message flash handler.
 app.use(flash)
 // Routing.
-app.use(router)
+app.use(csurf({ cookie: true }), router)
 
 // Listening port.
 app.listen(port, () => console.log(`=> http://localhost:${port} !`))

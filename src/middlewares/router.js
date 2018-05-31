@@ -10,6 +10,7 @@ router.get('/', (request, response) => {
     response.render('layout', {
       view: 'home',
       title: 'Accueil',
+      csrfToken: request.csrfToken(),
     })
   })
 })
@@ -51,6 +52,7 @@ router.get('/message/:mid(\\d+)/update', (request, response) => {
       response.render('layout', {
         view: 'form',
         title: 'Your message',
+        csrfToken: request.csrfToken(),
       })
     }
   })
