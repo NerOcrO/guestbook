@@ -3,6 +3,7 @@
 import bodyParser from 'body-parser'
 import express from 'express'
 import session from 'express-session'
+import helmet from 'helmet'
 import { join } from 'path'
 import favicon from 'serve-favicon'
 import flash from './middlewares/flash'
@@ -15,13 +16,13 @@ const port = process.env.PORT || 8080
 app.set('view engine', 'ejs')
 // Views directory?
 app.set('views', join(__dirname, '/views'))
-// No x-powered-by.
-app.set('x-powered-by', false)
 
 /**
  * MIDDLEWARES.
  */
 
+// Header protection.
+app.use(helmet())
 // Public directory.
 app.use(express.static('public'))
 // Body parser (POST).
