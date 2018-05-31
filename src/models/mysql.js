@@ -14,11 +14,15 @@ class Message {
   }
 
   get created() {
-    return moment(this.row.created)
+    return moment(this.row.created * 1000)
   }
 
   get content() {
     return this.row.content
+  }
+
+  static getTimestamp() {
+    return Math.floor(Date.now() / 1000)
   }
 
   /**
@@ -30,7 +34,7 @@ class Message {
    *   Callback.
    */
   static create(message, callback) {
-    connection.query('INSERT INTO messages SET content = ?', [message], (error) => {
+    connection.query('INSERT INTO messages SET content = ?, created = ?', [message, Message.getTimestamp()], (error) => {
       if (error) {
         throw error
       }
@@ -46,7 +50,7 @@ class Message {
    *   Callback.
    */
   static loadAll(callback) {
-    connection.query('SELECT * FROM messages', (error, results) => {
+    connection.query('SELECT * FROM messages ORDER BY created DESC', (error, results) => {
       if (error) {
         throw error
       }
