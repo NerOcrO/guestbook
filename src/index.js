@@ -31,12 +31,17 @@ app.use(bodyParser.json())
 // Favicon.
 app.use(favicon(join(__dirname, '../public', 'livre-dor.png')))
 // Session.
-app.use(session({
+const sess = {
   secret: 'guestbook nerocro',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false },
-}))
+  cookie: {},
+}
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1)
+  sess.cookie.secure = true
+}
+app.use(session(sess))
 // Message flash handler.
 app.use(flash)
 // Routing.
