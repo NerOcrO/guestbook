@@ -1,6 +1,7 @@
 'use strict'
 
 import bodyParser from 'body-parser'
+import compression from 'compression'
 import cookieParser from 'cookie-parser'
 import csurf from 'csurf'
 import express from 'express'
@@ -25,6 +26,8 @@ app.set('views', join(__dirname, '/views'))
 
 // Header protection.
 app.use(helmet())
+// Compress all responses.
+app.use(compression())
 // Public directory.
 app.use(express.static('public'))
 // CSRF
