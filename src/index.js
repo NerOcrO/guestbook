@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import compression from 'compression'
 import cookieParser from 'cookie-parser'
 import csurf from 'csurf'
+import Debug from 'debug'
 import express from 'express'
 import session from 'express-session'
 import helmet from 'helmet'
@@ -13,6 +14,7 @@ import flash from './middlewares/flash'
 import router from './middlewares/router'
 
 const app = express()
+const debug = Debug('gb')
 const port = process.env.PORT || 8080
 
 // Select of view engine.
@@ -55,4 +57,4 @@ app.use(flash)
 app.use(csurf({ cookie: true }), router)
 
 // Listening port.
-app.listen(port, () => console.log(`=> http://localhost:${port} !`))
+app.listen(port, () => debug(`=> http://localhost:${port} !`))

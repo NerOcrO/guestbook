@@ -1,4 +1,7 @@
+import Debug from 'debug'
 import mysql from 'mysql'
+
+const debug = Debug('gb')
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -10,11 +13,11 @@ const connection = mysql.createConnection({
 
 connection.connect((error) => {
   if (error) {
-    console.error(`[MySQL] Error connecting: ${error.stack}`)
+    debug(`[MySQL] Error connecting: ${error.stack}`)
     return
   }
 
-  console.log(`[MySQL] Connected as id ${connection.threadId}`)
+  debug(`[MySQL] Connected as id ${connection.threadId}`)
 })
 
 export default connection
