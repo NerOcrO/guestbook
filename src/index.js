@@ -19,6 +19,7 @@ const port = process.env.PORT || 8080
 
 // Select of view engine.
 app.set('view engine', 'ejs')
+app.set('view options', { rmWhitespace: true })
 // Views directory?
 app.set('views', join(__dirname, '/views'))
 
