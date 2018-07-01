@@ -10,6 +10,10 @@
   "keywords": [],
   "author": "NerOcrO",
   "license": "ISC",
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.8.6"
+  },
   "dependencies": {
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
