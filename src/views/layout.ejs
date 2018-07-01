@@ -6,6 +6,7 @@
     <link rel="icon" href="/livre-dor.png" type="image/x-icon">
   </head>
   <body>
+    <span id="backToTop">&nbsp;</span>
     <header class="fixed-top">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -25,6 +26,9 @@
     <main class="container">
       <%- include(locals.view) %>
     </main>
+    <footer class="fixed-bottom nav justify-content-end">
+      <a href="#backToTop" class="btn btn-dark back-to-top" title="<%= 'Back to top' %>">⇧</a>
+    </footer>
     <style>
       main {
         margin-top: 65px;
