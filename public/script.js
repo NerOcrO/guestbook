@@ -1,13 +1,3 @@
-(() => {
-  'use strict'
+'use strict';(function(){'use strict';var a=function(a){return!!confirm('Are you sure?')||void a.preventDefault()};document.querySelectorAll('.btn-danger').forEach(function(b){return b.addEventListener('click',a)})})();
 
-  const isDelete = (event) => {
-    if (confirm('Are you sure?')) {
-      return true
-    }
-
-    event.preventDefault()
-  }
-
-  document.querySelectorAll('.btn-danger').forEach(currentValue => currentValue.addEventListener('click', isDelete))
-})()
+//# sourceMappingURL=script.js.map

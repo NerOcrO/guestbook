@@ -33,13 +33,14 @@ app.use(helmet())
 app.use(compression())
 // Public directory.
 app.use(express.static('public'))
+app.use(express.static('assets'))
 // CSRF
 app.use(cookieParser())
 // Body parser (POST).
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 // Favicon.
-app.use(favicon(join(__dirname, '../public', 'livre-dor.png')))
+app.use(favicon(join(__dirname, '../assets', 'livre-dor.png')))
 // Session.
 const sess = {
   secret: 'guestbook nerocro',

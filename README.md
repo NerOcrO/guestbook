@@ -6,6 +6,8 @@
 
 ## Documentation
 
+* <https://babeljs.io/docs/en/babel-cli>
+* <https://github.com/jakubpawlowicz/clean-css-cli>
 * <https://expressjs.com/en/4x/api.html>
 * <https://github.com/visionmedia/debug>
 * <http://ejs.co/#docs>
