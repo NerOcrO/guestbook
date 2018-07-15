@@ -9,7 +9,7 @@ router.get('/', (request, response) => {
     response.locals.messages = messages
     response.render('layout', {
       view: 'home',
-      title: 'Accueil',
+      title: 'Home',
       csrfToken: request.csrfToken(),
     })
   })
