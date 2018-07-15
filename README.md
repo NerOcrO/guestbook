@@ -6,6 +6,12 @@
 
 ![screenshot](screenshot.png)
 
+## Install
+
+Create a src/config/database-local.json then
+
+`npm install && npm run install`
+
 ## Documentation
 
 * <https://babeljs.io/docs/en/babel-cli>
@@ -13,5 +19,6 @@
 * <https://expressjs.com/en/4x/api.html>
 * <https://github.com/visionmedia/debug>
 * <http://ejs.co/#docs>
+* <https://knexjs.org/>
 * <http://momentjs.com/>
 * <https://github.com/mysqljs/mysql>

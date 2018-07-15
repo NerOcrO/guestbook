@@ -9,7 +9,8 @@
     "build": "rm -rf public && mkdir public && npm run build_js && npm run build_css",
     "watch_js": "npm run build_js -- -w",
     "dev": "npm run build && DEBUG=gb nodemon src/index.js --exec babel-node",
-    "start": "npm run build && node -r babel-register src/index.js"
+    "start": "npm run build && node -r babel-register src/index.js",
+    "install": "node -r babel-register src/config/install-database.js"
   },
   "keywords": [],
   "author": "NerOcrO",
@@ -33,6 +34,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "helmet": "^3.12.1",
+    "knex": "^0.15.1",
     "moment": "^2.22.2",
     "mysql": "^2.15.0",
     "serve-favicon": "^2.5.0"

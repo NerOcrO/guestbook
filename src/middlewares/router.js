@@ -1,5 +1,5 @@
 import express from 'express'
-import Message from '../models/mysql'
+import Message from '../models/messages'
 
 const router = express.Router()
 

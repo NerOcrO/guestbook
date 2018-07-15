@@ -1,5 +1,8 @@
+import Debug from 'debug'
 import moment from 'moment'
-import connection from '../config/mysql'
+import connection from '../config/connection'
+
+const debug = Debug('gb')
 
 /**
  * Message class.
@@ -33,14 +36,15 @@ class Message {
    * @param {Function} callback
    *   Callback.
    */
-  static create(message, callback) {
-    connection.query('INSERT INTO messages SET content = ?, created = ?', [message, Message.getTimestamp()], (error) => {
-      if (error) {
-        throw error
-      }
+  static async create(message, callback) {
+    await connection('messages').insert({ content: message, created: Message.getTimestamp() })
 
+    try {
       callback()
-    })
+    }
+    catch (error) {
+      debug(error)
+    }
   }
 
   /**
@@ -49,14 +53,15 @@ class Message {
    * @param {Function} callback
    *   Callback.
    */
-  static loadAll(callback) {
-    connection.query('SELECT * FROM messages ORDER BY created DESC', (error, results) => {
-      if (error) {
-        throw error
-      }
+  static async loadAll(callback) {
+    const results = await connection.select('*').from('messages').orderBy('created', 'desc')
 
+    try {
       callback(results.map(result => new Message(result)))
-    })
+    }
+    catch (error) {
+      debug(error)
+    }
   }
 
   /**
@@ -67,19 +72,20 @@ class Message {
    * @param {Function} callback
    *   Callback.
    */
-  static load(mid, callback) {
-    connection.query('SELECT * FROM messages WHERE mid = ?', [mid], (error, result) => {
-      if (error) {
-        throw error
-      }
+  static async load(mid, callback) {
+    const result = await connection.select('*').from('messages').where('mid', '=', mid)
 
+    try {
       if (result.length === 0) {
         callback([])
       }
       else {
         callback(new Message(result[0]))
       }
-    })
+    }
+    catch (error) {
+      debug(error)
+    }
   }
 
   /**
@@ -92,14 +98,15 @@ class Message {
    * @param {Function} callback
    *   Callback.
    */
-  static update(mid, message, callback) {
-    connection.query('UPDATE messages SET content = ? WHERE mid = ?', [message, mid], (error) => {
-      if (error) {
-        throw error
-      }
+  static async update(mid, message, callback) {
+    await connection('messages').update({ content: message }).where('mid', '=', mid)
 
+    try {
       callback()
-    })
+    }
+    catch (error) {
+      debug(error)
+    }
   }
 
   /**
@@ -110,14 +117,15 @@ class Message {
    * @param {Function} callback
    *   Callback.
    */
-  static delete(mid, callback) {
-    connection.query('DELETE FROM messages WHERE mid = ?', [mid], (error, result) => {
-      if (error) {
-        throw error
-      }
+  static async delete(mid, callback) {
+    const result = await connection('messages').where('mid', '=', mid).del()
 
-      callback(result.affectedRows)
-    })
+    try {
+      callback(result)
+    }
+    catch (error) {
+      debug(error)
+    }
   }
 }
 
