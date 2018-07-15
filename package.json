@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "NerOcrO",
-  "license": "ISC",
+  "license": "MIT",
   "engines": {
     "node": ">=6.0.0",
     "npm": ">=3.8.6"
