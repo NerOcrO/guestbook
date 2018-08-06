@@ -8,8 +8,6 @@
 
 ## Install
 
-Create a src/config/database-local.json then
-
 `npm install && npm run install`
 
 ## Documentation
@@ -19,6 +17,7 @@ Create a src/config/database-local.json then
 * <https://expressjs.com/en/4x/api.html>
 * <https://github.com/visionmedia/debug>
 * <http://ejs.co/#docs>
+* <https://github.com/SBoudrias/Inquirer.js>
 * <https://knexjs.org/>
 * <http://momentjs.com/>
 * <https://github.com/mysqljs/mysql>
