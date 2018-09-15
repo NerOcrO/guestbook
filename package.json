@@ -20,6 +20,7 @@
     "npm": ">=3.8.6"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-minify": "^0.4.3",
     "babel-register": "^6.26.0",
@@ -36,11 +37,9 @@
     "inquirer": "^6.2.0",
     "knex": "^0.15.2",
     "moment": "^2.22.2",
-    "mysql": "^2.16.0",
-    "serve-favicon": "^2.5.0"
+    "mysql": "^2.16.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",

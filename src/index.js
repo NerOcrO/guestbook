@@ -9,7 +9,6 @@ import express from 'express'
 import session from 'express-session'
 import helmet from 'helmet'
 import { join } from 'path'
-import favicon from 'serve-favicon'
 import flash from './middlewares/flash'
 import router from './middlewares/router'
 
@@ -33,14 +32,12 @@ app.use(helmet())
 app.use(compression())
 // Public directory.
 app.use(express.static('public'))
-app.use(express.static('assets'))
+app.use(express.static('src/assets'))
 // CSRF
 app.use(cookieParser())
 // Body parser (POST).
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-// Favicon.
-app.use(favicon(join(__dirname, '../assets', 'livre-dor.png')))
 // Session.
 const sess = {
   secret: 'guestbook nerocro',
