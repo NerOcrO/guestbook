@@ -19,7 +19,7 @@ const questions = [
     message: "What's your password?",
   },
 ]
-const createDataBase = ((answers) => {
+const createDataBase = async (answers) => {
   const replaceValue = (match, p1, p2, p3) => {
     if (p1) {
       return answers.host
@@ -38,16 +38,20 @@ const createDataBase = ((answers) => {
 
   const knex = require('knex')(JSON.parse(database))
 
-  knex.raw('DROP DATABASE IF EXISTS guestbook')
-    .then(() => knex.raw('CREATE DATABASE IF NOT EXISTS guestbook'))
-    .then(() => knex.raw('USE guestbook'))
-    .then(() => knex.raw('CREATE TABLE `messages` (`mid` int(10) UNSIGNED NOT NULL, `created` int(11) NOT NULL, `content` longtext NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4'))
-    .then(() => knex.raw('ALTER TABLE `messages` ADD PRIMARY KEY (`mid`), ADD KEY `created` (`created`)'))
-    .then(() => knex.raw('ALTER TABLE `messages` MODIFY `mid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT'))
-    .then(() => console.log('Install database OK'))
-    .then(() => process.exit())
-    .catch(error => console.log(error))
-})
+  try {
+    await knex.raw('DROP DATABASE IF EXISTS guestbook')
+    await knex.raw('CREATE DATABASE IF NOT EXISTS guestbook')
+    await knex.raw('USE guestbook')
+    await knex.raw('CREATE TABLE `messages` (`mid` int(10) UNSIGNED NOT NULL, `created` int(11) NOT NULL, `content` longtext NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4')
+    await knex.raw('ALTER TABLE `messages` ADD PRIMARY KEY (`mid`), ADD KEY `created` (`created`)')
+    await knex.raw('ALTER TABLE `messages` MODIFY `mid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT')
+    console.info('Install database OK')
+    process.exit()
+  }
+  catch (error) {
+    console.error(error)
+  }
+}
 
 inquirer
   .prompt(questions)

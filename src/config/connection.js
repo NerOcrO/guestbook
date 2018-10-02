@@ -11,7 +11,7 @@ const connection = require('knex')(database)
 connection('messages')
   .catch((error) => {
     if (error.code === 'ER_BAD_DB_ERROR') {
-      console.log('[Guestbook] Install your database before, see the README')
+      console.error('[Guestbook] Install your database before, see the README')
     }
   })
 
