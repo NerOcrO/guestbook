@@ -1,5 +1,5 @@
 <div>
-  <a href="/message/<%= message.mid %>">Message <%= message.mid %> - <%= message.created.format('MMMM Do YYYY, h:mm:ss a') %> - <%= message.created.fromNow() %></a>
+  <a href="/message/<%= message.mid %>">Message <%= message.mid %> - <%= message.displayCreated %> - <%= message.displayFromNow %></a>
   <br>
   <p><%= message.content %></p>
   <a href="/message/<%= message.mid %>/update" class="btn btn-success">Update</a>

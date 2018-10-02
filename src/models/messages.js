@@ -1,5 +1,5 @@
 import Debug from 'debug'
-import moment from 'moment'
+import { format, distanceInWordsToNow } from 'date-fns'
 import connection from '../config/connection'
 
 const debug = Debug('gb')
@@ -10,6 +10,8 @@ const debug = Debug('gb')
 class Message {
   constructor(row) {
     this.row = row
+    this.displayCreated = format(this.created, 'MMMM Do YYYY, h:mm:ss a')
+    this.displayFromNow = distanceInWordsToNow(this.created, new Date())
   }
 
   get mid() {
@@ -17,7 +19,7 @@ class Message {
   }
 
   get created() {
-    return moment(this.row.created * 1000)
+    return this.row.created * 1000
   }
 
   get content() {
