@@ -31,7 +31,7 @@
     "express-session": "^1.16.2",
     "helmet": "^3.20.0",
     "inquirer": "^6.5.0",
-    "knex": "^0.19.1",
+    "knex": "^0.19.5",
     "mysql": "^2.17.1"
   },
   "devDependencies": {
