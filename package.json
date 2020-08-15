@@ -3,15 +3,6 @@
   "version": "1.0.0",
   "description": "A simple guestbook with many BDD",
   "main": "src/index.js",
-  "scripts": {
-    "build_js": "babel src/javascripts --out-file public/script.js --source-maps",
-    "build_css": "cleancss -o public/style.css src/css/* --source-map",
-    "build": "rm -rf public && mkdir public && npm run build_js && npm run build_css",
-    "watch_js": "npm run build_js -- -w",
-    "dev": "npm run build && DEBUG=gb nodemon src/index.js",
-    "start": "npm run build && node -r babel-register src/index.js",
-    "install": "node -r babel-register src/config/install-database.js"
-  },
   "keywords": [],
   "author": "NerOcrO",
   "license": "MIT",
@@ -19,34 +10,45 @@
     "node": ">=6.0.0",
     "npm": ">=3.8.6"
   },
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-minify": "^0.4.3",
-    "babel-register": "^6.26.0",
-    "body-parser": "^1.18.3",
-    "clean-css-cli": "^4.2.1",
-    "compression": "^1.7.3",
-    "cookie-parser": "^1.4.3",
-    "csurf": "^1.9.0",
-    "date-fns": "^1.29.0",
-    "debug": "^3.1.0",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
-    "express-session": "^1.15.6",
-    "helmet": "^3.13.0",
-    "inquirer": "^6.2.0",
-    "knex": "^0.15.2",
-    "mysql": "^2.16.0"
-  },
-  "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "nodemon": "^1.18.4"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NerOcrO/guestbook"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "babel-preset-minify": "^0.5.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.4",
+    "csurf": "^1.10.0",
+    "date-fns": "^1.30.1",
+    "debug": "^4.1.1",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "helmet": "^3.23.0",
+    "inquirer": "^6.5.0",
+    "knex": "^0.19.5",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.5.5",
+    "clean-css-cli": "^4.3.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "build": "rm -rf public && mkdir public && npm run build_css && npm run build_js",
+    "build_css": "cleancss -o public/style.css src/css/*",
+    "build_js": "babel src/javascripts --out-file public/script.js",
+    "dev": "npm run build && DEBUG=gb nodemon src/index.js",
+    "postinstall": "node -r @babel/register src/config/install-database.js",
+    "start": "node -r @babel/register src/index.js",
+    "watch_js": "npm run build_js -- -w --source-maps"
   }
 }
